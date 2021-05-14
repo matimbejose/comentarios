@@ -53,13 +53,13 @@ data() {
 
 methods: {
     addComment() {
-        //console.log("chamado!");
-        //console.log(this.name);
-        //console.log(this.message);
+        //trabalhando as validadcoes
+    if(this.name.trim() === )
         this.comments.push({
             name: this.name,
             message: this.message
         });
+
         this.name = '';
         this.message = '';
     }
