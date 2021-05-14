@@ -20,12 +20,14 @@
 <hr />
 <div class="form-todo from-group"> 
  <p>
-     <input placeholder="nome" type="text" name="author" class="from-control" />
+    <!---- Nome---->
+     <input placeholder="nome" type="text" name="author" class="from-control" v-model="name" />
  </p>
  <p>
-     <textarea placeholder="Comentario" name="messsagem" class="from-crontrol"></textarea>
+    <!--- comentario----->
+     <textarea placeholder="Comentario" name="messsagem" class="from-crontrol" v-model="message"></textarea>
  </p>
- <button type="submit" class="btn btn-primary">Comentar</button>
+ <button v-on:click="addComment" type="submit" class="btn btn-primary">Comentar</button>
  <div class="list-group">
  </br>
      <div class="list-group-item" v-for="comment in comments">
@@ -43,10 +45,23 @@
 `,
 data() {
     return {
-        comments: [{
-             name: 'jose',
-             message: 'Ola mundo'
-        }]
+        comments: [],
+        name: '',
+        message: ''
+    }
+},
+
+methods: {
+    addComment() {
+        //console.log("chamado!");
+        //console.log(this.name);
+        //console.log(this.message);
+        this.comments.push({
+            name: this.name,
+            message: this.message
+        });
+        this.name = '';
+        this.message = '';
     }
 }
 })
